@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cell Miner - Find your cellphone plan!</title>
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
   </head>
   <body>
     <div class="container">
@@ -34,13 +35,22 @@
       </nav>
       <div class="row">
         <div class="jumbotron">
-          <h1>Find your cellphone plan without fuss...</h1>
+          <h2>Find your cellphone <span class="glyphicon glyphicon-phone coroled-icon"></span> plan without fuss...</h2>
           <h3>Just enter your info below and we'll send out the miners to get you the best plans!</h3>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-8 col-xs-offset-2 well">
-          <p>Form goes here</p>
+          <p>Search Now</p>
+          <form >
+            <div class="form-group input-group input-group-lg">
+                  <input type="text" name="id" placeholder="Enter the custumer id number" class="form-control"/>
+                  <span class="input-group-btn">
+                     <button type="submit" name="search" value="search" class="btn btn-default">Search Now  <span class="glyphicon glyphicon-search"></span></button>
+                  </span>
+            </div>
+          </form>
+          
         </div>
       </div>
     </div>
