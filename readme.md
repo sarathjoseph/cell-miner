@@ -1,0 +1,1 @@
+# Cell Miner is an web app that helps people locate the best fitting cellphone plan from a remote repository
