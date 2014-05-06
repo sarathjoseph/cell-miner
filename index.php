@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cell Miner - Find your cellphone plan!</title>
-    <link href="assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
     <h1>Hello, world!</h1>
