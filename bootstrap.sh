@@ -14,18 +14,13 @@ echo "mysql-server-5.5 mysql-server/root_password password root" | debconf-set-s
 echo "mysql-server-5.5 mysql-server/root_password_again password root" | debconf-set-selections
 apt-get install -y mysql-server
 apt-get install -y php5-mysql
-apt-get install -y openjdk-7-jdk
-apt-get install -y libmysql-java
 apt-get install -y nodejs
 apt-get install -y git
 rm -rf /var/www
-ln -fs /vagrant/served /var/www
+ln -fs /vagrant/www /var/www
 ln -fs /vagrant/setup /home/vagrant/setup
-ln -fs /vagrant/depot /home/vagrant/depot
-mysql -u root --password='root' < /home/vagrant/setup/sdd_db.sql
-cp /home/vagrant/setup/json-simple-1.1.1.jar /usr/share/java/json-simple.jar
+ln -fs /vagrant/files /home/vagrant/files
+# mysql -u root --password='root' < /home/vagrant/setup/sdd_db.sql
 cp /home/vagrant/setup/000-default.conf /etc/apache2/sites-available/000-default.conf
 service apache2 restart
 rm -rf /home/vagrant/setup
-echo "CLASSPATH=$CLASSPATH:/usr/share/java/mysql.jar:/usr/share/java/json-simple.jar" >> /home/vagrant/.bashrc
-echo "export CLASSPATH" >> /home/vagrant/.bashrc
