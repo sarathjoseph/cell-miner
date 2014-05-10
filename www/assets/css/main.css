@@ -1,7 +1,22 @@
-body{
- background-color: #3c8dcf;
- }
- 
-.coroled-icon{
-    color: #3c8dcf;
- }
+body {
+	background-color: #4D4640;
+	color: #FEECD9;
+}
+
+.navbar {
+	margin-top: 2%;
+	color: #3E3A39;
+}
+
+.bg-miners {
+	width:100%;
+	background: url('/assets/img/miners.jpg') no-repeat center center;
+}
+
+.bg-spacing {
+	padding: 15% 0 25% 0;
+}
+
+.search {
+	padding-top: 5%;
+}
