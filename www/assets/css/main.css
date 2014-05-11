@@ -8,15 +8,52 @@ body {
 	color: #3E3A39;
 }
 
+.bg-spacing form, .bg-spacing button{
+	color: #5E5E5E;
+}
+
+
 .bg-miners {
-	width:100%;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
 	background: url('/assets/img/miners.jpg') no-repeat center center;
+	z-index: -30;
+}
+
+.bg-miners h2, h3 {
+	text-shadow: 1px 1px 0 #4D4640, -1px -1px 0 #4D4640, 1px -1px 0 #4D4640,
+            -1px 1px 0 #4D4640, 3px 3px 5px #333;
 }
 
 .bg-spacing {
-	padding: 15% 0 25% 0;
+	padding: 15% 0 30% 0;
+}
+
+#link-register {
+	text-decoration: none;
+	color: #FEECD9;
+	padding-top: 15px;
+}
+
+#link-register:hover {
+	text-decoration: none;
+	color: #E1C6B6;
+	padding-top: 15px;
+}
+
+#copyright {
+	padding-top: 15px;
 }
 
 .search {
 	padding-top: 5%;
+}
+
+.divider {
+	background-image: url('/assets/img/divider.png');
+	background-repeat: repeat-x;
+	width: 100%;
+	height: 25px;
 }

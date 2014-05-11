@@ -21,12 +21,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-phone colored-icon"></span> Cell Miner</a>
+              <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-phone colored-icon"></span> Cell Miner</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Find a Plan!</a></li>
+                <li class="active"><a href="index.php">Find a Plan!</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Login</a></li>
@@ -35,9 +35,26 @@
           </div><!-- /.container-fluid -->
         </nav>
         <div class="row bg-spacing">
-          <div class="col-xs-8 col-xs-offset-2">
-            <h2>Find your cellphone plan without fuss...</h2>
-            <h3>Just enter your info below and we'll send out the miners to get you the best plans!</h3>
+          <div class="col-xs-8 col-xs-offset-2 well">
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <label for="input-carrier" class="col-xs-2 control-label">Carrier</label>
+                <div class="col-xs-10">
+                  <input type="text" class="form-control" id="input-carrier">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="input-ip-address" class="col-sm-2 control-label">IP Address</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" id="input-ip-address">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="submit" class="btn btn-default">Register</button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -45,20 +62,7 @@
     </div>
     <div class="container">
       <div class="row search">
-        <div class="col-xs-8 col-xs-offset-2">
-          <form >
-            <div class="form-group input-group input-group-lg">
-                  <input type="text" name="id" placeholder="Enter your customer id here" class="form-control"/>
-                  <span class="input-group-btn">
-                     <button type="submit" name="search" value="search" class="btn btn-default">Search Now  <span class="glyphicon glyphicon-search"></span></button>
-                  </span>
-            </div>
-          </form>
-          <div class="row">
-                <a id="link-register" class="text-center" href="register.php"><h4 class="text-center">Are you a carrier? Register here!</h4></a>
-                <p id="copyright" class="text-center">©2014 Bit Miners, Inc. All rights reserved.</p>
-          </div>
-        </div>
+        <p id="copyright" class="text-center">©2014 Bit Miners, Inc. All rights reserved.</p>
       </div>
     </div>
     <script src="assets/jquery.min.js"></script>
