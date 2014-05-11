@@ -36,17 +36,17 @@
         </nav>
         <div class="row bg-spacing">
           <div class="col-xs-8 col-xs-offset-2 well">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" id="register-carrier-form">
               <div class="form-group">
                 <label for="input-carrier" class="col-xs-2 control-label">Carrier</label>
                 <div class="col-xs-10">
-                  <input type="text" class="form-control" id="input-carrier">
+                  <input type="text" class="form-control" name="carrier" id="input-carrier">
                 </div>
               </div>
               <div class="form-group">
                 <label for="input-ip-address" class="col-sm-2 control-label">IP Address</label>
                 <div class="col-sm-10">
-                  <input type="number" class="form-control" id="input-ip-address">
+                  <input type="text" class="form-control" name="ip-address" id="input-ip-address">
                 </div>
               </div>
               <div class="form-group">
