@@ -20,7 +20,7 @@ rm -rf /var/www
 ln -fs /vagrant/www /var/www
 ln -fs /vagrant/setup /home/vagrant/setup
 ln -fs /vagrant/files /home/vagrant/files
-# mysql -u root --password='root' < /home/vagrant/setup/sdd_db.sql
+mysql -u root --password='root' < /home/vagrant/setup/cell-miner_db.sql
 cp /home/vagrant/setup/000-default.conf /etc/apache2/sites-available/000-default.conf
 service apache2 restart
 rm -rf /home/vagrant/setup

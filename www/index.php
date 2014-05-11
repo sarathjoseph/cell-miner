@@ -29,7 +29,7 @@
                 <li class="active"><a href="#">Find a Plan!</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Login</a></li>
+                <li><a><span class="glyphicon glyphicon-user"></span> -</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
