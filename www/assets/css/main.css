@@ -22,13 +22,17 @@ body {
 	z-index: -30;
 }
 
-.bg-miners h2, h3 {
+.bg-miners h2, .bg-miners h3 {
 	text-shadow: 1px 1px 0 #4D4640, -1px -1px 0 #4D4640, 1px -1px 0 #4D4640,
             -1px 1px 0 #4D4640, 3px 3px 5px #333;
 }
 
 .bg-spacing {
 	padding: 15% 0 20% 0;
+}
+
+.bg-spacing-plans {
+	padding: 4% 0 4% 0;
 }
 
 #link-register {
@@ -48,6 +52,10 @@ body {
 }
 
 .search {
+	padding-top: 5%;
+}
+
+.plans {
 	padding-top: 5%;
 }
 
