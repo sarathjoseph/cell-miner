@@ -23,5 +23,6 @@ ln -fs /vagrant/files /home/vagrant/files
 mysql -u root --password='root' < /home/vagrant/setup/cell-miner_db.sql
 cp /home/vagrant/setup/000-default.conf /etc/apache2/sites-available/000-default.conf
 service apache2 restart
+npm install forever -g
 rm -rf /home/vagrant/setup
-forever start /home/vagrant/files/miner/app.js
+/usr/bin/forever start /home/vagrant/files/miner/app.js

@@ -114,7 +114,7 @@
       $( document ).ready(function() {
         $.ajax({
             type: 'get',
-              url: "localhost:9200/mine",
+              url: "http://192.168.233.145:9200/mine",
               data: "id=<?= $_POST['id'] ?>&phone=<?= $want_phone ?>"
           }).success(function(data){
             alert(''+data);
