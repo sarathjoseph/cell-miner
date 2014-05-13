@@ -1,3 +1,12 @@
+<?php
+
+  $want_phone = 'no';
+
+  if(isset($_POST['phone']) && !empty($_POST['phone'])) {
+    $want_phone = 'yes';
+  }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50,7 +59,7 @@
               <div class="thumbnail">
                 <div class="caption">
                   <h3>Plan #1</h3>
-                  <h4><small>T-Mobile</small></h4>
+                  <h3><small>T-Mobile</small></h3>
                   <ul>
                     <li>Type of Plan</li>
                     <li>Unlimited Voice Minutes</li>
@@ -65,7 +74,7 @@
               <div class="thumbnail">
                 <div class="caption">
                   <h3>Plan #2</h3>
-                  <h4><small>Verizon Wireless</small></h4>
+                  <h3><small>Verizon Wireless</small></h3>
                   <ul>
                     <li>Type of Plan</li>
                     <li>1000 Voice Minutes</li>
@@ -80,7 +89,7 @@
               <div class="thumbnail">
                 <div class="caption">
                     <h3>Plan #3</h3>
-                    <h4><small>AT&T</small></h4>
+                    <h3><small>AT&T</small></h3>
                     <ul>
                       <li>Type of Plan</li>
                       <li>Unlimited Voice Minutes</li>
@@ -101,5 +110,16 @@
     <script src="assets/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script type="text/javascript">
+      $( document ).ready(function() {
+        $.ajax({
+            type: 'get',
+              url: "localhost:9200/mine",
+              data: "id=<?= $_POST['id'] ?>&phone=<?= $want_phone ?>"
+          }).success(function(data){
+            alert(''+data);
+          });
+      });
+    </script>
   </body>
 </html>

@@ -48,9 +48,12 @@
         <div class="col-xs-8 col-xs-offset-2">
           <form role="form" action="plans.php" method="post">
             <div class="form-group input-group input-group-lg">
+              <span class="input-group-addon">
+                <input name="phone" type="checkbox"> With Phone?
+              </span>
               <input type="text" name="id" placeholder="Enter your customer id here" class="form-control"/>
               <span class="input-group-btn">
-                 <button type="submit" name="search" value="search" class="btn btn-default">Search Now  <span class="glyphicon glyphicon-search"></span></button>
+                 <button type="submit" class="btn btn-default">Search Now  <span class="glyphicon glyphicon-search"></span></button>
               </span>
             </div>
           </form>
