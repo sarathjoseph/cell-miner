@@ -1,3 +1,12 @@
+<?php
+
+  $want_phone = 'no';
+
+  if(isset($_POST['phone']) && !empty($_POST['phone'])) {
+    $want_phone = 'yes';
+  }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,44 +30,29 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-phone colored-icon"></span> Cell Miner</a>
+              <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-phone colored-icon"></span> Cell Miner</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Find a Plan!</a></li>
+                <li class="active"><a href="index.php">Find a Plan!</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li><a><span class="glyphicon glyphicon-user"></span> -</a></li>
+                <li><a><span class="glyphicon glyphicon-user"></span> <?= $_POST['id'] ?></a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
         </nav>
-        <div class="row bg-spacing">
-          <div class="col-xs-8 col-xs-offset-2">
-            <h2>Find your cellphone plan without fuss...</h2>
-            <h3>Just enter your info below and we'll send out the miners to get you the best plans!</h3>
-          </div>
+        <div class="row bg-spacing-plans">
         </div>
       </div>
       <div class="divider"></div>
     </div>
     <div class="container">
-      <div class="row search">
-        <div class="col-xs-8 col-xs-offset-2">
-          <form role="form" action="mine.php" method="post">
-            <div class="form-group input-group input-group-lg">
-              <span class="input-group-addon">
-                <input name="phone" type="checkbox"> With Phone?
-              </span>
-              <input type="text" name="id" placeholder="Enter your customer id here" class="form-control"/>
-              <span class="input-group-btn">
-                 <button type="submit" class="btn btn-default">Search Now  <span class="glyphicon glyphicon-search"></span></button>
-              </span>
-            </div>
-          </form>
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+          <h1 class="text-center">Mining for plans...</h1>
           <div class="row">
-                <a id="link-register" class="text-center" href="register.php"><h4 class="text-center">Are you a carrier? Register here!</h4></a>
                 <p id="copyright" class="text-center">©2014 Bit Miners, Inc. All rights reserved.</p>
           </div>
         </div>
@@ -67,5 +61,21 @@
     <script src="assets/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script type="text/javascript">
+      $( document ).ready(function() {
+        $.ajax({
+            type: 'get',
+              url: "http://192.168.233.145:8000/mine",
+              data: "id=<?= $_POST['id'] ?>&phone=<?= $want_phone ?>",
+              async: false
+          }).success(function(data){
+            var form = $('<form action="plans.php" method="post">'
+                          +'<input type="text" name="response_json" value="'+data+'" />'
+                          +'<form>');
+            $('body').append(form);
+            $(form).submit();
+          });
+      });
+    </script>
   </body>
 </html>

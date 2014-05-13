@@ -1,11 +1,5 @@
 <?php
-
-  $want_phone = 'no';
-
-  if(isset($_POST['phone']) && !empty($_POST['phone'])) {
-    $want_phone = 'yes';
-  }
-
+  $plans = json_decode($_POST['response_json']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,51 +49,22 @@
       <div class="row">
         <div class="col-xs-10 col-xs-offset-1">
           <div class="row plans">
-            <div class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <div class="caption">
-                  <h3>Plan #1</h3>
-                  <h3><small>T-Mobile</small></h3>
-                  <ul>
-                    <li>Type of Plan</li>
-                    <li>Unlimited Voice Minutes</li>
-                    <li>Unlimited Texts</li>
-                    <li>4 GB of Data</li>
-                  </ul>
-                  <p><h1>$90 <small>a month</small></h1><a href="#" class="btn btn-default" role="button">Select Plan</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <div class="caption">
-                  <h3>Plan #2</h3>
-                  <h3><small>Verizon Wireless</small></h3>
-                  <ul>
-                    <li>Type of Plan</li>
-                    <li>1000 Voice Minutes</li>
-                    <li>Unlimited Texts</li>
-                    <li>6 GB of Data</li>
-                  </ul>
-                  <p><h1>$90 <small>a month</small></h1><a href="#" class="btn btn-default" role="button">Select Plan</a></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-md-4">
-              <div class="thumbnail">
-                <div class="caption">
-                    <h3>Plan #3</h3>
-                    <h3><small>AT&T</small></h3>
+            <?php foreach ($plans as $k => $a_plan) {
+              echo '<div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                  <div class="caption">
+                    <h3>'.$a_plan['name'].'</h3>
+                    <h3><small>'.$a_plan['company']['name'].'</small></h3>
                     <ul>
-                      <li>Type of Plan</li>
-                      <li>Unlimited Voice Minutes</li>
-                      <li>1000 Texts</li>
-                      <li>2 GB of Data</li>
+                      <li>'.$a_plan['package']['coverage'].'</li>
+                      <li>'.$a_plan['package']['text'].'</li>
+                      <li>'.$a_plan['package']['voice'].'</li>
+                      <li>'.$a_plan['package']['data'].'</li>
                     </ul>
-                    <h1>$90 <small>a month</small></h1><a href="#" class="btn btn-default" role="button">Select Plan</a>
+                    <p><h1>$'.$a_plan['price'].' <small>'.$a_plan['cycle'].'</small></h1><a href="#" class="btn btn-default" role="button">Select Plan</a></p>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </div> '} ?>
           </div>
           <div class="row">
                 <p id="copyright" class="text-center">©2014 Bit Miners, Inc. All rights reserved.</p>
@@ -110,16 +75,5 @@
     <script src="assets/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script type="text/javascript">
-      $( document ).ready(function() {
-        $.ajax({
-            type: 'get',
-              url: "http://192.168.233.145:8000/mine",
-              data: "id=<?= $_POST['id'] ?>&phone=<?= $want_phone ?>"
-          }).success(function(data){
-            alert(''+data);
-          });
-      });
-    </script>
   </body>
 </html>
