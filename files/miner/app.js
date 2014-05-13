@@ -17,15 +17,55 @@ app.use(function (req, res, next) {
     next();
 });
 
+var ip_info = (function() {
+	var info_array = {};
+	function set(val) {
+		info_array = val;
+	}
+	return {
+		setArray: function(val) {
+			set(val);
+		},
+		getArray: function() {
+			return info_array;
+		}
+	};
+})();
+
 var request = require("request");
+var mysql = require("mysql");
+var connection = mysql.createConnection({
+	host : 'localhost',
+	user : 'root',
+	password : 'root',
+	database : 'cellminer'
+});
 
-var ip1 = 'http://localhost/cellminer/';
-var ip2 = 'http://localhost/cellminer/';
-var ip3 = 'http://localhost/cellminer/';
-var ip4 = 'http://localhost/cellminer/';
+connection.connect(function(err) {
+	if(err) {
+		console.error('Error connecting to DB: ' + err.stack);
+		return;
+	}
 
+	console.log('Connected as ID: ' + connection.threadId);
+});
 
+var ip1;
+var ip2;
+var ip3;
+var ip4;
 
+connection.query('SELECT name, address FROM Carrier LIMIT 4', function(err, results) {
+	ip1 = results[0].address;
+	ip2 = results[1].address;
+	ip3 = results[2].address;
+	ip4 = results[3].address;
+});
+
+// var ip1 = 'http://localhost/cellminer/';
+// var ip2 = 'http://localhost/cellminer/';
+// var ip3 = 'http://localhost/cellminer/';
+// var ip4 = 'http://localhost/cellminer/';
 
 app.get('/mine', function (req, res) {
 
