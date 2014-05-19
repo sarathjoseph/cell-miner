@@ -74,7 +74,8 @@
                     <p><h1>$'.$a_plan['price'].' <small>'.$a_plan['cycle'].'</small></h1><a href="#" class="btn btn-default" role="button">Select Plan</a></p>
                   </div>
                 </div>
-              </div> '} ?>
+              </div>';
+            } ?>
           </div>
           <div class="row">
                 <p id="copyright" class="text-center">©2014 Bit Miners, Inc. All rights reserved.</p>
