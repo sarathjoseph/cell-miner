@@ -1,5 +1,15 @@
 <?php
-  $plans = json_decode($_POST['response_json']);
+
+  $want_phone = 'no';
+
+  if(isset($_POST['phone']) && !empty($_POST['phone'])) {
+    $want_phone = 'yes';
+  }
+
+  $url = 'http://192.168.233.145:8000/mine?id='.$_POST['id'].'&phone='.$want_phone;
+  $result = file_get_contents($url);
+
+  $plans = json_decode($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">

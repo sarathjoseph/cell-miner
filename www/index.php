@@ -46,7 +46,7 @@
     <div class="container">
       <div class="row search">
         <div class="col-xs-8 col-xs-offset-2">
-          <form role="form" action="mine.php" method="post">
+          <form role="form" action="plans.php" method="post">
             <div class="form-group input-group input-group-lg">
               <span class="input-group-addon">
                 <input name="phone" type="checkbox"> With Phone?
