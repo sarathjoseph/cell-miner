@@ -5,7 +5,7 @@
 // ip 10.120.100.42
 
 
-// to offer deffrent kind of format 
+// to offer deffrent kind of format
 // $format = strtolower($_GET['format']) == 'json' ? 'json' : 'xml'; //xml is the default
 
 
@@ -39,34 +39,72 @@ function getAllRows(){
 	$db->close();
 }
 
+// cheek if there is any get request will do the proccess.
 if($_GET['id']){
+	// set the have fone fee
 	$addPhoneFee=0;
-	$phone=$_GET['phone'];
-	
-	
-	if($phone=='yes'){
-		$addPhoneFee=20;
-		settype($addPhoneFee, "integer");
-	}
-	else if($phone!='yes')
-	{
-		$addPhoneFee=0;
-		settype($addPhoneFee, "integer");
-
-	}
-
 	$castomID= $_GET['id'];
+	$phone=$_GET['phone'];
+
+	// if the request has pone set to yes will add the pone fee.
+	if($phone=='yes'){
+		$addPhoneFee=10;
+		settype($addPhoneFee, "integer");
+	}
+	else if($phone!='no')
+		{
+			$addPhoneFee=0;
+			settype($addPhoneFee, "integer");
+
+		}
+
 
 	$costomIncoming = getIncome($castomID);
 	$perstege=$costomIncoming*.0125;
 
-	if($perstege>= 30){
+	if($perstege>= 30 && $perstege < 40 ){
 		//if($format == 'json') {
-		// tel the header that we have that we sent json format 
-		$planPrice=35+$addPhoneFee;
+		// tel the header that we have that we sent json format
 		
-			header('Content-type: application/json');
-			$Ofer='{
+		
+		$planPrice=35+$addPhoneFee;
+
+		getThePanIno($planPrice);
+		
+
+	}
+	if($perstege>= 40 && $perstege < 50 ){
+		//if($format == 'json') {
+		// tel the header that we have that we sent json format
+		$addPhoneFee+=10;
+		$planPrice=45+$addPhoneFee;
+
+		getThePanIno($planPrice);
+		
+
+	}
+	if($perstege>= 50 && $perstege < 60){
+		//if($format == 'json') {
+		// tel the header that we have that we sent json format
+		$addPhoneFee+=15;
+		$planPrice=50+$addPhoneFee;
+
+		getThePanIno($planPrice);
+		
+
+	}
+	
+	
+	}
+	
+	// to set the json format with aquerate 
+	function getThePanIno($price_){
+	header('Content-type: application/json');
+	
+	//set the price if it has phone.
+	$planPrice=$price_;
+	
+		$Ofer='{
   "name": "Simple Starter Plan",
   "description": "Get a single line with unlimited talk, text and up to 500MB of 4G LTE data.",
   "dataEnabled": true,
@@ -78,10 +116,11 @@ if($_GET['id']){
          "publicityMessage": "Companity specific publicity message"
      }
 }';
-			echo($Ofer);
+		echo($Ofer);
 
+		
+	}
 	
-}}
 // to get ther response from anther php file.
 //$response = http_get("http://www.example.com/", array("timeout"=>1), $info);
 //print_r($info);
