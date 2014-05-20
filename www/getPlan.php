@@ -10,12 +10,14 @@
 
 
 function getIncome($_id){
-	$db=new mysqli('127.0.0.1','root','XYZ','DB756');
+	$db=new mysqli('10.120.100.44','student','student','db756');
 	if (mysqli_connect_errno()) {
 		echo 'Error: Could not connect to database. Please try again later.';
 		exit;
 	}
-	$sql="select Id, income from InComeID where Id= $_id";
+	//$sql="select Id, income from InComeID where Id= $_id";
+	$sql="select id, income from income where id= $_id";
+
 	$result= $db->query($sql);
 	$objec = $result->fetch_assoc();
 	$result->close();
@@ -68,8 +70,9 @@ if($_GET['id']){
 		
 		
 		$planPrice=35+$addPhoneFee;
+		$dataUsege=" 500MB ";
 
-		getThePanIno($planPrice);
+		getThePanIno($planPrice,$dataUsege);
 		
 
 	}
@@ -78,8 +81,9 @@ if($_GET['id']){
 		// tel the header that we have that we sent json format
 		$addPhoneFee+=10;
 		$planPrice=45+$addPhoneFee;
+		$dataUsege=" 1000MB ";
 
-		getThePanIno($planPrice);
+		getThePanIno($planPrice,$dataUsege);
 		
 
 	}
@@ -88,8 +92,9 @@ if($_GET['id']){
 		// tel the header that we have that we sent json format
 		$addPhoneFee+=15;
 		$planPrice=50+$addPhoneFee;
+		$dataUsege=" unlimited ";
 
-		getThePanIno($planPrice);
+		getThePanIno($planPrice,$dataUsege);
 		
 
 	}
@@ -98,15 +103,16 @@ if($_GET['id']){
 	}
 	
 	// to set the json format with aquerate 
-	function getThePanIno($price_){
+	function getThePanIno($price_,$dataUsage_){
 	header('Content-type: application/json');
 	
 	//set the price if it has phone.
 	$planPrice=$price_;
+	$data=$dataUsage_;
 	
 		$Ofer='{
   "name": "Simple Starter Plan",
-  "description": "Get a single line with unlimited talk, text and up to 500MB of 4G LTE data.",
+  "description": "Get a single line with unlimited talk, text and up to '.$data.' of 4G LTE data.",
   "dataEnabled": true,
   "type": "prepaid",
   "price": '.$planPrice.',
