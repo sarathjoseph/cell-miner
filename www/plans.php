@@ -6,10 +6,9 @@
     $want_phone = 'yes';
   }
 
-  $url = 'http://192.168.233.145:8000/mine?id='.$_POST['id'].'&phone='.$want_phone;
+  $url = 'http://192.168.233.145:8000/mine?id='.$_POST['id'].'%26phone='.$want_phone;
   $result = file_get_contents($url);
-
-  $plans = json_decode($result);
+  $plans = json_decode($result, true);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,14 +63,14 @@
                 <div class="thumbnail">
                   <div class="caption">
                     <h3>'.$a_plan['name'].'</h3>
-                    <h3><small>'.$a_plan['company']['name'].'</small></h3>
+                    <h3><img src="'.$a_plan['company']['logo'].'" alt="Carrier Logo" height="50" width="50"> <small>'.$a_plan['company']['name'].'</small></h3> 
                     <ul>
                       <li>'.$a_plan['package']['coverage'].'</li>
                       <li>'.$a_plan['package']['text'].'</li>
-                      <li>'.$a_plan['package']['voice'].'</li>
+                      <li>'.$a_plan['package']['talk'].'</li>
                       <li>'.$a_plan['package']['data'].'</li>
                     </ul>
-                    <p><h1>$'.$a_plan['price'].' <small>'.$a_plan['cycle'].'</small></h1><a href="#" class="btn btn-default" role="button">Select Plan</a></p>
+                    <p><h1>'.$a_plan['price'].' <small>'.$a_plan['cycle'].'</small></h1><a href="#" class="btn btn-default" role="button">Select Plan</a></p>
                   </div>
                 </div>
               </div>';

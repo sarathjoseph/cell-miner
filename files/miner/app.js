@@ -19,36 +19,36 @@ app.use(function (req, res, next) {
 
 var request = require("request");
 
-var ip1 = 'http://10.100.100.23/';
-var ip2 = 'http://10.100.100.22/';
-var ip3 = 'http://10.100.100.23/';
-var ip4 = 'http://10.100.100.23/';
+var ip1 = 'http://192.168.233.145/';
+var ip2 = 'http://192.168.233.145/';
+var ip3 = 'http://192.168.233.145/';
+var ip4 = 'http://192.168.233.145/';
 
 app.get('/mine', function (req, res) {
 
-	
-	var plans = [];
+    
+    var plans = "[";
     var id = req.param("id");
     var phone = req.param("phone");
     var mine_path = '/getPlan.php?id='+id+"&phone="+phone;
 
     request.get(ip1 + mine_path, function (error, response, body) {
 
-        plans.push(body);
+       plans+=body+",";
 
         request.get(ip2 + mine_path, function (error, response, body) {
 
-            plans.push(body);
+            plans+=body+",";
 
             request.get(ip3 + mine_path, function (error, response, body) {
 
-                plans.push(body);
+                plans+=body+",";
 
                 request.get(ip4 + mine_path, function (error, response, body) {
 
-                    plans.push(body);
-                    res.send(JSON.stringify(plans));
-
+                plans+=body+"]";
+                res.send(plans);
+            
                 });
                
 
